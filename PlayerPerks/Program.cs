@@ -19,17 +19,45 @@ namespace PlayerPerks
         {
             Perks myPerks;
             myPerks = 0;
+            int w = 0;
+            int a = 0;
+            int d = 0;
+            int s = 0;
+
             foreach (char c in args[0])
-            {
                 switch (c)
                 {
-                    case 'w': myPerks |= Perks.WaterBreathing; break;
-                    case 'a': myPerks |= Perks.AutoHeal; break;
-                    case 's': myPerks |= Perks.DoubleJump; break;
-                    case 'd': myPerks |= Perks.Stealth; break;
-                    default: Console.WriteLine("Unkown Perk"); return;
+                    case 'w':
+                        w++;
+
+                        break;
+
+                    case 'a':
+                        a++;
+
+                        break;
+
+                    case 's':
+                        d++;
+
+                        break;
+
+                    case 'd':
+                        s++;
+
+                        break;
+
+                    default:
+                        Console.WriteLine("Unkown Perk");
+
+                        return;
                 }
-            }
+
+            if (w % 2 == 1) myPerks |= Perks.WaterBreathing;
+            if (a % 2 == 1) myPerks |= Perks.AutoHeal;
+            if (d % 2 == 1) myPerks |= Perks.DoubleJump;
+            if (s % 2 == 1) myPerks |= Perks.Stealth;
+
             Console.WriteLine($"Player perks: {myPerks}");
 
             if (args.Length == 0)//In case there is no input
@@ -37,9 +65,9 @@ namespace PlayerPerks
                 Console.WriteLine("No perks at all!");
             }
 
-            if ((myPerks & Perks.Stealth & Perks.DoubleJump) = Perks.Stealth | Perks.DoubleJump)
+            if (((myPerks & Perks.Stealth) == Perks.Stealth) && ((myPerks & Perks.DoubleJump) == Perks.DoubleJump))
             {
-                Console.WriteLine("Silent jumper!");
+                Console.WriteLine("Silent Jumper!");
             }
 
             if ((myPerks & Perks.AutoHeal) != Perks.AutoHeal)
