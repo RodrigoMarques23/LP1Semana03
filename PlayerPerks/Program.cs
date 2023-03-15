@@ -27,20 +27,20 @@ namespace PlayerPerks
                     case 'a': myPerks |= Perks.AutoHeal; break;
                     case 's': myPerks |= Perks.DoubleJump; break;
                     case 'd': myPerks |= Perks.Stealth; break;
-                    default: Console.WriteLine(""); return;
+                    default: Console.WriteLine("Unkown Perk"); return;
                 }
             }
             Console.WriteLine($"Player perks: {myPerks}");
 
             if (args.Length == 0)//In case there is no input
             {
-                Console.WriteLine("Player has no perks");
+                Console.WriteLine("No perks at all!");
             }
 
-            /*if (myPerks = Perks.Stealth | Perks.DoubleJump)
+            if ((myPerks & Perks.Stealth & Perks.DoubleJump) = Perks.Stealth | Perks.DoubleJump)
             {
                 Console.WriteLine("Silent jumper!");
-            }*/
+            }
 
             if ((myPerks & Perks.AutoHeal) != Perks.AutoHeal)
             {
