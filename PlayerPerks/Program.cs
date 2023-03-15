@@ -18,6 +18,7 @@ namespace PlayerPerks
         static void Main(string[] args)
         {
             Perks myPerks;
+            myPerks = 0;
             foreach (char c in args[0])
             {
                 switch (c)
@@ -31,19 +32,19 @@ namespace PlayerPerks
             }
             Console.WriteLine($"Player perks: {myPerks}");
 
-            /*if (args.Length == 0)//In case there is no input
+            if (args.Length == 0)//In case there is no input
             {
                 Console.WriteLine("Player has no perks");
             }
 
-            if (myPerks == Perks.Stealth | Perks.DoubleJump)
+            /*if (myPerks = Perks.Stealth | Perks.DoubleJump)
             {
                 Console.WriteLine("Silent jumper!");
-            }
+            }*/
             if (myPerks != Perks.AutoHeal)
             {
                 Console.WriteLine("Not gonna make it!");
-            }*/
+            }
         }
     }
 }
