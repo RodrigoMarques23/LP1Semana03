@@ -10,10 +10,10 @@ namespace PlayerPerks
         [Flags]
         enum Perks
         {
-            WaterBreathing,
-            Stealth,
-            AutoHeal,
-            DoubleJump
+            WaterBreathing = 1,
+            Stealth = 2,
+            AutoHeal = 4,
+            DoubleJump = 8
         };
         static void Main(string[] args)
         {
@@ -23,10 +23,10 @@ namespace PlayerPerks
             {
                 switch (c)
                 {
-                    case 'w': myPerks = Perks.WaterBreathing; break;
-                    case 'a': myPerks = Perks.AutoHeal; break;
-                    case 's': myPerks = Perks.DoubleJump; break;
-                    case 'd': myPerks = Perks.Stealth; break;
+                    case 'w': myPerks |= Perks.WaterBreathing; break;
+                    case 'a': myPerks |= Perks.AutoHeal; break;
+                    case 's': myPerks |= Perks.DoubleJump; break;
+                    case 'd': myPerks |= Perks.Stealth; break;
                     default: Console.WriteLine(""); return;
                 }
             }
@@ -41,7 +41,8 @@ namespace PlayerPerks
             {
                 Console.WriteLine("Silent jumper!");
             }*/
-            if (myPerks != Perks.AutoHeal)
+
+            if ((myPerks & Perks.AutoHeal) != Perks.AutoHeal)
             {
                 Console.WriteLine("Not gonna make it!");
             }
