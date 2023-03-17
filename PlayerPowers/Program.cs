@@ -6,55 +6,59 @@ namespace PlayerPowers
     {
         [Flags]
 
-        enum PlayerPowers
+        enum PlayerSuperPower
         {
             Fly = 1,
-            XRayVision = 2,
-            SuperStrenght = 4
+            XrayVision = 2,
+            SuperStrength = 4
 
         };
         static void Main(string[] args)
         {
-            int myPowers;
-            myPowers = 0;
 
-            Console.WriteLine("Numero de jogadores?");
-            int n = Int32.Parse(Console.ReadLine());
-            PlayerPowers[] player = new PlayerPowers[n];
+            Console.Write("Número de jogadores: ");
 
-            foreach (PlayerPowers a in player)
+            int n = Convert.ToInt32(Console.ReadLine());
+
+            PlayerSuperPower[] players = new PlayerSuperPower[n];
+
+            for (int i = 0; i < players.Length; i++)
             {
-                Console.WriteLine("Quais sao os teus poderes?");
-                string s = Console.ReadLine();
-                foreach (char c in s[0])
-                {
-                    switch (c)
+                Console.Write($"Insira os poderes para o jogador {i + 1}: ");
+
+                string powers = Console.ReadLine();
+
+                foreach (char p in powers)
+                    switch (p)
                     {
                         case 'f':
-                            myPowers |= PlayerPowers.Fly;
+                            players[i] |= PlayerSuperPower.Fly;
+
                             break;
 
                         case 'x':
-                            myPowers |= PlayerPowers.XRayVision;
+                            players[i] |= PlayerSuperPower.XrayVision;
+
                             break;
 
                         case 's':
-                            myPowers |= PlayerPowers.SuperStrenght;
+                            players[i] |= PlayerSuperPower.SuperStrength;
+
                             break;
-
-                        default:
-                            Console.WriteLine("Unkown Power");
-
-                            return;
                     }
-                }
-
             }
 
-            if (((myPowers & PlayerPowers.Fly) == PlayerPowers.Fly) && ((myPowers & PlayerPowers.SuperStrenght) == PlayerPowers.SuperStrenght))
+            for (int i = 0; i < players.Length; i++)
             {
-                Console.WriteLine("Flying Radiation!");
+                Console.WriteLine($"Poderes do jogador {i + 1}: {players[i]}");
+
+                if ((players[i] & PlayerSuperPower.Fly) ==
+                    PlayerSuperPower.Fly &&
+                    (players[i] & PlayerSuperPower.SuperStrength) ==
+                    PlayerSuperPower.SuperStrength)
+                    Console.WriteLine("Flying Radiation");
             }
         }
     }
 }
+
