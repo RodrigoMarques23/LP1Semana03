@@ -15,7 +15,13 @@ namespace PlayerPowers
         };
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine("Numero de jogadores?");
+            int n = Int32.Parse(Console.ReadLine());
+
+            if (((myPowers & PlayerPowers.Fly) == PlayerPowers.Fly) && ((myPowers & PlayerPowers.SuperStrenght) == PlayerPowers.SuperStrenght))
+            {
+                Console.WriteLine("Flying Radiation!");
+            }
         }
     }
 }
